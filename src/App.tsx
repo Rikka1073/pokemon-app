@@ -1,15 +1,20 @@
 import axios from "axios";
 import "./App.css";
+import { useEffect } from "react";
 
 function App() {
-  axios
-    .get("https://pokeapi.co/api/v2/pokemon/")
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch(() => {
-      console.log("Error");
-    });
+  useEffect(() => {
+    axios
+      .get("https://pokeapi.co/api/v2/pokemon/")
+      .then((response) => {
+        const pokemonData = response.data.results;
+        console.log(pokemonData);
+      })
+      .catch(() => {
+        console.log("Error");
+      });
+  });
+
   return (
     <>
       <div>
